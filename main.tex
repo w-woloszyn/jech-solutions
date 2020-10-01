@@ -1,0 +1,205 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\include{MathMacrosJDH}
+
+\theoremstyle{definition}
+\newtheorem{innercustomthm}{Exercise}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+\title{
+\vspace{-2cm}
+  \author{Wojciech Aleksander Wołoszyn}
+  Solutions for
+  T. Jech's Set Theory \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{customthm}{I.1.1}
+    Assume that $(a,b)=(c,d)$ or, in other words, $\set{\set{a},\set{a,b}} = \set{\set{c},\set{c,d}}$. By the axiom of extensionality, we have that $\set{a} \in \set{\set{c},\set{c,d}}$ and $\set{a,b} \in \set{\set{c},\set{c,d}}$. By the axiom of pairing, we have that $\set{a} = \set{c}$ or $\set{a} = \set{c,d}$ and $\set{a,b} = \set{c}$ or $\set{a,b} = \set{c,d}$. Suppose, $\set{a} = \set{c,d}$, then, by pairing and extensionality, $a=c=d$. So $\set{\set{a},\set{a,b}} = \set{\set{c},\set{c,d}}$ becomes $\set{\set{a},\set{a,b}} = \set{\set{a}}$, and, again by pairing and extensionality, $a=b$. And we have that $a=b=c=d$. Suppose $\set{a} = \set{c}$ and $\set{a} \neq \set{c,d}$. Then, by extensionality and pairing, $a=c \neq d$. If $\set{a,b} = \set{c}$, then $a=b=c$, which would imply $a=b=c=d$, contradiction. So $\set{a,b} = \set{c,d}$ and $a \neq b$. By the axioms of pairing and extensionality, we have that $a=c$ and $b=d$. Other direction is immediate.
+\end{customthm}
+
+\begin{customthm}{I.1.2}
+    Suppose we have that $P(X) \subset X$. Then, there must be a surjection $f \colon X \to P(X)$. But the set $\set{x \colon x \not\in f(x)}$ is not in $P(X)$.
+\end{customthm}
+
+\begin{customthm}{I.1.3}\label{ex:set-of-elements-of-inductive-set-is-inductive}
+    Let $Y=\set{x \in X \colon x \subset X}$. We show that $Y$ is inductive. First, it is obvious that $\emptyset \in Y$. Let $y \in Y$. Since $Y \subset X$, it follows that $y \in X$. But $X$ is inductive, so $y \cup \set{y} \in X$. Furthermore, $\set{y} \subset X$. By the definition of $Y$, it is also the case that $y \subset X$. So $y \cup \set{y} \subset X$. Thus, $y \cup \set{y} \in Y$.
+    
+    Let $N$ be the smallest inductive set $N = \bigcap \set{X \colon X \text{ is inductive}}$. Set $Y = \set{x \in N \colon x \subset N}$. By the definition of $Y$, $Y \subset N$. But $N$ is minimal, so we have that $N \subset Y$. Hence, $Y=N$. And $N$ is transitive, because $y \in N$, implies $y \subset N$.
+    
+    We show by induction that $n = \set{m \in N \colon m < n}$. Since $N$ is inductive, we have that $\emptyset \in N$. Assume that $n = \set{m \in N \colon m < n}$. Now, $n+1 = n \cup \set{n} = \set{m \in N \colon m < n} \cup \set{n} = \set{m \in N \colon m < n \text{ or } m=n} = \set{m \in N \colon m < n + 1}$.
+\end{customthm}
+
+\begin{customthm}{I.1.4}\label{ex:set-of-transitive-elements-of-inductive-set-is-inductive}
+    Let $Y = \set{x \in X \colon x \text{ is transitive}}$. First, since $X$ is inductive, $\emptyset \in X$. The empty set is transitive, so $\emptyset \in Y$. Let $y \in Y$. We know that $Y \subset X$, so $y \in X$. And we know that $y$ is transitive, so $y \subset X$. Hence $y \cup \set{y} \in X$. It remains to show that $y \cup \set{y}$ is transitive. Let $\gamma \in y \cup \set{y}$. Then $\gamma$ is either equal to $y$ or an element of $y$. If $\gamma = y$, then, in particular, $\gamma \subset y$. If $\gamma \in y$, then $\gamma \subset y$, because $y$ is transitive. And so, $\gamma \subset y \cup \set{y}$.
+    
+    Set $Y = \set{x \in N \colon x \text{ is transitive}}$. By the definition of $Y$, $Y \subset N$. But since $Y$ is inductive and $N$ is a minimal inductive set, we also have that $N \subset Y$. Hence, $N=Y$ and every element $n$ of $N$ is transitive.
+\end{customthm}
+
+\begin{customthm}{I.1.5}\label{ex:set-of-transitive-elements-with-x-not-in-x-of-inductive-set-is-inductive}
+    Let $Y = \set{x \in X \colon x \text{ is transitive and } x \not\in x}$. First, since $X$ is inductive, $\emptyset \in X$. The empty set is transitive and has no element (particularly $\emptyset \not\in \emptyset)$), so $\emptyset \in Y$. Let $y \in Y$. From exercise~\ref{ex:set-of-transitive-elements-of-inductive-set-is-inductive}, the set $y \cup \set{y}$ is transitive. It is enough to show that $y \cup \set{y} \not\in y \cup \set{y}$. If the opposite were the case then either $y \cup \set{y}$ would be equal to $y$ or an element of $y$. If $y \cup \set{y} = y$, then $\set{y} \subset y$, hence $y \in y$, which is a contradiction. If $y \cup \set{y} \in y$, then, again $y \in y$.
+    
+    Set $Y = \set{x \in N \colon x \text{ is transitive and } x \not\in x}$. By the definition of $Y$, $Y \subset N$. But since $Y$ is inductive and $N$ is a minimal inductive set, we also have that $N \subset Y$. Hence, $N=Y$ and every element $n$ of $N$ is such that $n \not\in n$. In other words, $n \neq n+1$ for each $n \in N$.
+\end{customthm}
+
+\begin{customthm}{I.1.6}
+    Let $Y = \set{x \in X \colon x \text{ is transitive and every nonempty } z \subset x \text{ has an $\in$-minimal element}}$. First, since $X$ is inductive, $\emptyset \in X$. The empty set is transitive and has no nonempty elements, so it is in $Y$. From exercise~\ref{ex:set-of-transitive-elements-of-inductive-set-is-inductive}, the set $y \cup \set{y} \in X$ is transitive. Let $z \subset y \cup \set{y}$ be nonempty. If $t \in z$, then $t \in y \cup \set{y}$. So either $t \in y$ or $t=y$, so $t \subset y$. So $t$ is either an $\in$-minimal or has $\in$-minimal element. But since $t \in z$, $z$ has $\in$-minimal element. And so, $y \cup \set{y} \in Y$.
+\end{customthm}
+
+\begin{customthm}{I.1.7}\label{ex:every-nonempty-subset-of-N-is-inductive}
+    Let $X$ be a nonempty subset of $N$ and let $n \in X$. If $n \cap X$ is nonempty, then there is a minimal element $m \in n \cap X \subset n$, because $n$ has a minimal element. If $n \cap X$ is empty, then $n$ is the minimal element. If it weren't then there would be an element $m \in X$ such that $m \in n$. But $n \cap X$ is empty, so this is impossible.
+\end{customthm}
+
+\begin{customthm}{I.1.8}
+    Let $Y = \set{x \in X \colon x = \emptyset \text{ or } x = y \cup \set{y} \text{ for some y}}$. First, the empty set is in $Y$. Let $\gamma \in Y$ be nonempty. There is some $y$ such that $\gamma = y \cup \set{y}$. Note that $\gamma \cup \set{\gamma}$ is also of this form and $\gamma \in Y$, so $\gamma \cup \set{\gamma} \in Y$. 
+\end{customthm}
+
+\begin{customthm}{I.1.9}
+    $A$ is a subset of $N$, so $A \subset N$. Since $\emptyset \in A$ and $n \in A \implies n+1 = n \cup \set{n} \in A$, $A$ is inductive. By definition, $N$ is the minimal inductive set so $N \subset A$. Hence, $A=N$.
+\end{customthm}
+
+\begin{customthm}{I.1.10}
+    We proceed by induction. Element $0 = \emptyset \in N$ has no nonempty elements, so it's trivially $T$-finite. Suppose $n$ is $T$-finite. And let $X \subset P(n+1)$ be nonempty. Note that $X$ is either equal to $Y$ or to $Y \cup \set{n}$, for some subset $Y$ of $P(n)$. By the induction hypothesis, $Y$ has a $\subset$-maximal element $y$. If $X = Y$, $y$ is the maximal element of $X$. If $X = Y \cup \set{n}$, $y \cup \set{n}$ is the maximal element of $X$.
+\end{customthm}
+
+\begin{customthm}{I.1.11}
+    It is enough to observe that $n \in N$ is a proper subset of $n+1 \in N$.
+\end{customthm}
+
+\begin{customthm}{I.1.12}
+    Let $S$ be a finite set. And take any nonempty $X \subset P(S)$. We need to show that there is a $\subset$-maximal element in $X$. By the definition of finiteness, there is a bijection $f: S \to n$ for some $n \in N$. So there is an $x \in X$ such that $f(x)$ is a $\subset$-maximal element of $f(X)$. We claim that $x$ must be a $\subset$-maximal element in $X$. Otherwise there would be some $y \in X$ such that $x \subset y$, but $f(x) \not\subset f(y)$, which is absurd.
+\end{customthm}
+
+\begin{customthm}{I.1.13}
+    Let $S$ be infinite and set $X = \set{u \subset S \colon u \text{ is finite}}$. Note that $\emptyset \in X$, so $X$ is nonempty. Suppose $X$ has a $\subset$-maximal element $x$. Take $s \in S$ such that $s \not\in x$ (there must be such element as $S$ is infinite and $x$ is finite). But then $x \cup \set{s}$ is also finite, hence is in $X$. This is a contradiction with $x$ being the $\subset$-maximal element in $X$.
+\end{customthm}
+
+\begin{customthm}{I.1.14}
+    Let $\varphi(x)$ be a formula and let $X$ be arbitrary. Take $F = \set{(x,x) \colon \varphi(x)}$. By the Replacement Schema, $F(X) = \set{x \in X \colon \varphi(x)}$ for every $X$. Hence, the Separation Axioms follow from Replacement Schema.
+\end{customthm}
+
+\begin{customthm}{I.1.15}
+\leavevmode
+    \begin{enumerate}
+        \item We have that $\forall X \exists Y (\forall x \in X) (\forall u \in X) u \in Y$. Set an $X$ and take $\varphi(u) = (\exists z \in X) u \in z$. By the Separation Schema and the above weaker version of the Union, there is a set $Y' = \set{u \in Y \colon \varphi(u)} = \set{u \in Y \colon (\exists z \in X) u \in z}$. But then, $u \in Y' \iff \exists z (z \in X \land u \in z)$. Hence $Y' = \bigcup X$.
+        \item We have that $\forall X \exists Y \forall u (u \subset X \implies u \in Y)$. Set an $X$ and take $\varphi(u) = u \subset X$. By the Separation Schema and the above weaker version of the Power Set, there is a set $Y' = \set{u \in Y \colon \varphi(u)} = \set{u \in Y \colon u \subset X}$. But then, $u \in Y' \iff u \subset X$. Hence $Y' = P(X)$.
+        \item Let $F$ be a class function. We have that $\forall X \exists Y F(X) \subset Y$. Set an $X$ and take $varphi(u) = \exists x \in X F(x,u)$. By the Separation Schema and the above weaker version of the Replacement, there is a set $Y' = \set{u \in Y \colon \varphi(u)} = \set{u \in Y \colon \exists x \in X F(x,u)} = F(X)$.
+    \end{enumerate}
+\end{customthm}
+
+\begin{customthm}{I.2.1}
+    Let $P,Q,R$ be partial orderings. Order $P$ is isomorphic to itself via the identity function. If $P$ is isomorphic to $Q$ via $f$, then $Q$ is isomorphic to $P$ via $f^{-1}$. Finally, if $P$ is isomorphic to $Q$ via $f$ and $Q$ is isomorphic to $R$ via $g$, then $P$ is isomorphic to $R$ via $g \circ f$.
+\end{customthm}
+
+\begin{customthm}{I.2.2}
+    Let $\alpha$ be a limit ordinal. Suppose there is a $\beta < \alpha$ such that $\beta+1 \geq \alpha$. Hence, $\beta + 1 = \alpha$. But that would mean that $\alpha$ is a successor cardinal, contradiction.
+    
+    Let $\alpha$ be such that for every $\beta < \alpha$, $\beta + 1 < \alpha$. Then $\alpha$ must be a limit cardinal. If it weren't then there would be some $\beta_0 < \alpha$ such that $\alpha = \beta_0 + 1$, contradiction.
+\end{customthm}
+
+\begin{customthm}{I.2.3}
+    Let $X$ be inductive. First, $\emptyset \in X \cap \Ord$ -- for $\Ord$ by definition. for $X$ because it is inductive. Let $x \in X \cap \Ord$, then $x \cup \set{x} \in X \cap \Ord$ -- it is a basic fact that for $\Ord$ and it follows from inductivity for $X$. Hence, $X \cap \Ord$ is inductive.
+    
+    By exercise~\ref{ex:set-of-elements-of-inductive-set-is-inductive}, $N$ -- the smallest inductive set -- is transitive. It is easy to see that $N$ is linearly ordered. And what is more, by exercise~\ref{ex:every-nonempty-subset-of-N-is-inductive}, every nonempty subset of $N$ has an $\in$-minimal element. Hence, $N$ is an ordinal number. Also, note that for any $n<N$, $n+1<N$, so it is a limit ordinal. Furthermore, it is the smallest limit ordinal other than the empty set: every $n \in N$ is such that $(n-1) + 1 \not\in n$.
+\end{customthm}
+
+\begin{customthm}{I.2.4}
+    The first implication (i$\to$ii) follows, because $N$ is inductive and infinite.
+    
+    For the second (ii$\to$iii), assume that $X$ is infinite and consider the set $Y = \set{x \subset X \colon x \text{ is finite}}$. For each $x \in Y$, let $f(x)$ be a number of elements in $x$. Note that $f \colon Y \to \omega$ is a function. Let us prove this function is a surjection. Suppose $n \in Y$. There must be at least one $x \in f^{-1}(n)$. Otherwise, $X$ wouldn't be infinite. Hence, $f(Y) = \omega$ is a set.
+    
+    The last implication (iii$\to$i), observe that $\omega$ is an inductive set. Indeed, $\emptyset \in \omega$ and whenever $\alpha \in \omega$, then $\alpha+1 \in \omega$.
+\end{customthm}
+
+\begin{customthm}{I.2.5}
+    A nonempty subset $\set{a_0,a_1,\ldots}$ of $W$, constructed from such a sequence, would not have a $\in$-minimal element.
+\end{customthm}
+
+\begin{customthm}{I.2.6}
+    Let $\alpha$ be an ordinal. Take $\alpha_0 = \alpha$ and $\alpha_{n+1} = \alpha_n + 1$. Define the ordinal $\beta = \bigcup \alpha_n = \sup \set{\alpha_n} = \lim \alpha_n$. We shall prove that $\beta$ is a limit ordinal and since $\alpha$ was chosen arbitrarily, there are arbitrarily large limit ordinals. It suffices to show that whenever $\gamma \in \beta$, then $\gamma + 1 \in \beta$. Let $\gamma \in \beta$. There is an $\alpha_n$ such that $\gamma < \alpha_n$ (otherwise $\gamma \geq \beta$). But then $\gamma + 1 < \alpha_n + 1 = \alpha_n < \beta$. This ends the proof.
+\end{customthm}
+
+\begin{customthm}{I.2.7}
+
+\end{customthm}
+
+\begin{customthm}{I.2.8}
+    By induction: \\ i) $\gamma = 0$, easy; successor: $\alpha \cdot (\beta + \gamma + 1) = \alpha \cdot (\beta + \gamma) + \alpha \cdot 1 = \alpha \cdot \beta + \alpha \cdot \gamma + \alpha \cdot 1 = \alpha \cdot \beta + \alpha (\gamma + 1)$; limit: $\alpha \cdot (\beta + \gamma) = \alpha \cdot (\beta + \lim \gamma_n) = \lim \alpha \cdot (\beta + \gamma_n) = \lim \alpha \cdot \beta + \alpha \cdot \gamma_n = \alpha \cdot \beta + \alpha \cdot (\lim \gamma_n) = \alpha \cdot \beta + \alpha \cdot \gamma$. \\
+    ii) $\gamma = 0$, easy; successor: $\alpha^{\beta + \gamma + 1} = \alpha^{\beta + \gamma} \cdot \alpha^1 = \alpha^\beta \cdot \alpha^\gamma \cdot \alpha^1 = \alpha^\beta \cdot \alpha^{\gamma + 1}$; limit: $\alpha^{\beta + \gamma} = \alpha^{\beta + \lim \gamma_n} = \lim \alpha^{\beta + \gamma_n} = \lim \alpha^\beta \cdot \alpha^{\gamma_n} = \alpha^\beta \cdot \alpha^{\lim \gamma_n} = \alpha^\beta \cdot \alpha^{\gamma}$. \\
+    iii) $\gamma = 0$, easy; successor: $(\alpha^\beta)^{\gamma+1} = (\alpha^\beta)^\gamma \cdot (\alpha^\beta)^1 = \alpha^{\beta \cdot \gamma} + (\alpha^\beta \cdot 1) = \alpha^{\beta \cdot (\gamma +1)}$; limit: $(\alpha^\beta)^{\gamma} = (\alpha^\beta)^{\lim \gamma_n} = \lim (\alpha^\beta)^{\gamma_n} = \lim \alpha^{\beta \cdot \gamma_n} = \alpha^{\beta \cdot (\lim \gamma_n)} = \alpha^{\beta \cdot\gamma}$.
+\end{customthm}
+
+\begin{customthm}{I.2.9} \leavevmode \\
+    i) $(\omega+1) \cdot 2 = \omega + 1 + \omega + 1 = \omega + \omega + 1 = \omega \cdot 2 + 1$ \\
+    ii) $(\omega \cdot 2)^2 = (\omega \cdot 2) \cdot (\omega \cdot 2) = (\omega \cdot \omega \cdot 2) = \omega^2 \cdot 2$
+\end{customthm}
+
+\begin{customthm}{I.2.10} \leavevmode \\
+    i) Let $\alpha<\beta$. It is hard not to see that $\alpha + 0 < \beta + 0$. Suppose $\alpha + \gamma < \beta + \gamma$. Observe that $(\alpha + \gamma) + 1 < (\beta + \gamma) +1$ and, if $\gamma$ is a limit ordinal, suppose the hypothesis holds for $\gamma' < \gamma$, $\alpha + \gamma = \lim \alpha + \gamma_n \leq \lim \beta + \gamma_n = \beta + \gamma$. \\
+    ii) Likewise, $\alpha \cdot 0 \leq \beta \cdot 0$ and $\alpha \cdot 1 \leq \beta \cdot 1$ Suppose $\alpha \cdot \gamma < \beta \cdot \gamma$. Observe $\alpha \cdot (\gamma + 1) = \alpha \cdot \gamma + \alpha \cdot 1 < \beta \cdot \gamma + \beta = \beta (\gamma + 1)$. For limits, $\alpha \cdot \gamma = \lim \alpha \cdot \gamma_n \leq \lim \beta \cdot \gamma_n = \beta \cdot \gamma$ \\
+    iii) Finally, $\alpha^0 < \beta^0$. Suppose $\alpha^\gamma < \beta^\gamma$. Observe $\alpha^{\gamma+1} = \alpha^\gamma \cdot \alpha \leq \beta^\gamma \cdot \beta = \beta^{\gamma+1}$. For limits, $\alpha^\gamma = \lim \alpha^{\gamma_n} \leq \lim \beta^{\gamma_n} = \beta^\gamma$.
+\end{customthm}
+
+\begin{customthm}{I.2.11}
+    
+\end{customthm}
+
+\begin{customthm}{I.2.12}
+    Let $\alpha_0 = \omega$, $\alpha_{n+1} = \omega^{\alpha_n}$ and $\epsilon_0 = \lim \alpha_n$. Observe that $\omega^{\epsilon_0} = \omega^{\lim \alpha_n} = \lim \omega^{\alpha_n} = \lim \alpha_{n+1} = \epsilon_0$.
+    
+    Note that the above sequence $\alpha_n$ is increasing. Suppose there is $\epsilon < \epsilon_0$ such that $\omega^\epsilon = \epsilon$. It is obvious that such $\epsilon$ must be infinite. Take the smallest $n \in \omega$ such that $\alpha_{n+1} > \epsilon$. Observe that $\omega^{\alpha_n} = \alpha_{n+1} > \epsilon = \omega^\epsilon$. But then, $\alpha_n > \epsilon$, contradiction.
+\end{customthm}
+
+\begin{customthm}{I.2.13}
+    
+\end{customthm}
+
+\begin{customthm}{I.2.14}
+    If that were true, then $X = \set{a_n \colon n \in N } \subset P$ would be a nonempty set with no $E$-minimal element.
+\end{customthm}
+
+\begin{customthm}{I.2.15}
+    
+\end{customthm}
+
+\begin{customthm}{I.2.16}
+    
+\end{customthm}
+
+\begin{customthm}{I.3.1}
+    i) Suppose $X$ is finite and $Y \subset X$ is infinite. Thus, $Y$ is $T$-infinite, i.e., there is a nonempty $Z \subset P(Y)$ with no $\subset$-maximal element. But $P(Y) \subset P(X)$ and $X$ is finite (hence $T$-finite), so $Z$ must have a maximal element---contradiction. \\
+    ii) Let $\bigcup X_i$ be a finite union of finite sets. With each $X_i$, there is an associated bijection $f_i \colon X_i \to n_i$ for some natural number $n_i$. We define a function $f \colon \bigcup X_i \to \sum n_i$ by $f(x) = f_k(x) + \sum_{i<k} n_i$, where $k$ is minimal natural number such that $x \in X_k$. Clearly, $f$ is one-to-one. Note that $f$ is not necessarily a bijection ($X_i$ may overlap). \\
+    iii) Let $X$ be finite and have $n$ elements. Then $P(X)$ equinumerous with $2^X$, so has $2^n$ elements. \\
+    iv) Let $X$ be finite and let $f \colon X \to f(X)$ be a mapping. Since $X$ is finite, there is a bijection $g \colon X \to n$ for some natural number $n$. Consider an instance of $f^{-1}$. Then $h(x) = g \circ f^{-1}$ is in one to one correspondence with $n$ (though, again, not necessarily bijective correspondence, unless $f$ was one-to-one itself).
+\end{customthm}
+
+\begin{customthm}{I.3.2}
+    i) Let $X$ be countable and let $Y \subset X$. Since $X$ is countable, there is a bijection $f \colon X \to \omega$. But note that $f$ composed with the identity function $\mathrm{id} \colon Y \to X$ is in one-to-one correspondence with $\omega$. \\
+    ii) Let $\bigcup X_i$ be a finite union of countable sets. With each $X_i$, there is an associated bijection $f_i \colon X_i \to \omega \times \set{i}$. Take $f(x) \colon \bigcup X \to \omega \times \omega$ to be $f(x) = (f_i(x),i)$ with $i$ minimal. The desired function is $g \colon \bigcup X \to \omega$ defined by $g(x) = \Gamma \circ f(x)$, where $\Gamma$ is a bijection between $\omega \times \omega$ and $\omega$. Indeed, this proves that the finite union of countable sets is at least countable. And from i) we know that is is also at most countable. \\
+    iii) Let $X$ be countable and let $f \colon X \to f(X)$ be a mapping. Since $X$ is countable, there is a bijection $g \colon X \to \omega$. Consider an instance of $f^{-1}$. Then $h(x) = g \circ f^{-1}$ is in one to one correspondence with $\omega$.
+\end{customthm}
+
+\begin{customthm}{I.3.3}
+    It is enough to prove that $f \colon N \times N \to \omega$, $f(m,n) = 2^m(2n+1)-1$ is one-to-one. Note that $2^a(2b+1)-1 = 2^c(2d+1) - 1$ implies $2^a(2b+1) = 2^c(2d+1)$ implies $a=c, b=d$.
+\end{customthm}
+
+\begin{customthm}{I.3.4}
+    i) There are $\omega^n$ sequences of length $n$ in $N$. We use the axiom of choice to say that for each $n$ there is an injection $f_n \colon \text{sequences of length }n \to N$. But then, the function $f(x) = (f_n(x),n)$, where $n$ is the length of finite sequence $x$ is an injection. So the cardinality of all finite length sequences is at most countable. It is also at least countable because the number of all sequences of size $1$ is already countable. \\
+    ii) 
+\end{customthm}
+
+\begin{customthm}{I.3.5}
+    We prove it by induction on $\alpha$. First, $\Gamma(0 \times 0) = 0 \leq \omega^0 = 1$. Now, $\alpha \times \alpha$ is isomorphic to $\alpha \cdot \alpha$, so $\Gamma((\alpha+1) \times (\alpha+1)) = \text{order type of } (\alpha+1) \cdot (\alpha+1) = \text{order type of } \alpha^2 + \alpha \cdot 2 + 1 = \Gamma(\alpha \times \alpha) + \alpha \cdot 2 + 1 \leq \omega^\alpha + \alpha \cdot 2 + 1 \leq \omega^{\alpha+1}$.
+\end{customthm}
+
+\end{document}
