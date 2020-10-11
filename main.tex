@@ -202,4 +202,132 @@
     We prove it by induction on $\alpha$. First, $\Gamma(0 \times 0) = 0 \leq \omega^0 = 1$. Now, $\alpha \times \alpha$ is isomorphic to $\alpha \cdot \alpha$, so $\Gamma((\alpha+1) \times (\alpha+1)) = \text{order type of } (\alpha+1) \cdot (\alpha+1) = \text{order type of } \alpha^2 + \alpha \cdot 2 + 1 = \Gamma(\alpha \times \alpha) + \alpha \cdot 2 + 1 \leq \omega^\alpha + \alpha \cdot 2 + 1 \leq \omega^{\alpha+1}$.
 \end{customthm}
 
+\begin{customthm}{I.3.7}
+    Let $B$ be a projection of $\omega_\alpha$, i.e., there is a surjection $f \colon \omega_\alpha \to B$. It suffices to show that there is an injection $g \colon B \to \omega_\alpha$. Let $g(x) = s(f^{-1}(x))$ where $s$ is a selector function.
+\end{customthm}
+
+\begin{customthm}{I.3.8}
+    We know that the set of all finite sequences in $\omega^\alpha$ is of order-type $\omega_\alpha$ and hence its cardinality is $\aleph_\alpha$. It suffices to show that there is a surjection $f: [\omega_\alpha]^{<\omega}  \to \omega_\alpha^{<\omega}$. Then, by the axiom of choice we can construct an injection $g(x) = s(f^{-1}(x))$. It is enough to take $f$ to map any set in $[\omega_\alpha]^{<\omega}$ to an increasing sequence of its elements in $\omega_\alpha^{<\omega}$.
+\end{customthm}
+
+\begin{customthm}{I.3.9}
+    Let $B$ be a projection of $A$. That is, let there be a surjection $f \colon A \to B$. Define $g \colon P(B) \to P(A)$ as $g(X) = f^{-1}(X)$. We need to show that $g$ is one-to-one. Suppose $g(X) = g(Y)$, then $f^{-1}(X) = f^{-1}(Y)$ and $X=Y$, done.
+\end{customthm}
+
+\begin{customthm}{I.3.10}
+    
+\end{customthm}
+
+\begin{customthm}{I.3.11}
+    Since $\omega_{\alpha+1}$ is a projection of $P(\alpha)$, we know that $\aleph_{\alpha+1} \leq 2^{\aleph_\alpha}$. But by the Cantor's theorem, $2^{\aleph_\alpha} < 2^{2^{\aleph_\alpha}}$. So $\aleph_{\alpha+1} < 2^{2^{\aleph_\alpha}}$.
+\end{customthm}
+
+\begin{customthm}{I.3.12}
+    Note that $\omega_\zeta$, $\zeta < \cof \alpha$, is a non-decreasing $\cof \alpha$ sequence of ordinals in $\omega_\alpha$ and $\lim \omega_\zeta = \omega_\alpha$, so $\cof \cof \alpha = \cof \alpha = \cof \omega_\alpha$.
+\end{customthm}
+
+\begin{customthm}{I.3.13}
+    We work in $\ZF$. Suppose $\omega_2 = \bigcup_{n < \omega} S_n$ and each $S_n$ is countable and let $\alpha_n$ be the order-type of $S_n$. Then, for each $n$, there is a unique isomorphism $f_n \colon \alpha_n \to S_n$. Let us denote $\sup \alpha_n$ by $\alpha$. We define a function $f \colon \omega \times \alpha \to \omega_2$ by:
+    \begin{equation*}
+        f(n, \kappa) = \begin{cases} f_n(\kappa) & \mbox{if } \kappa \in \alpha_n \\ 0 & \mbox{otherwise.} \end{cases}
+    \end{equation*}
+    Let $\gamma \in \omega_2$, then there is a minimal $n$ with $\gamma \in S_n$ and $f_n^{-1}(\gamma) \in \alpha_n$, so there is a unique inverse (the one taking $n$ to be minimal, this uses the fact that $\omega \times \omega_2$ is well-ordered under $\ZF$) $f^-1(n,\gamma) = (n,f_n^{-1}(\gamma)$. Thus, $f$ is a surjection and $\aleph_2 \leq |\omega \times \alpha| \leq \aleph_0 \cdot \aleph_1 = \aleph_1$, contradiction.
+\end{customthm}
+
+\begin{customthm}{I.3.14}
+    Let $S$ be $D$--infinite. So there is a one-to-one mapping $f \colon S \to X$, where $X$ is a subset of $S$. Choose $x_0 \in S \setminus X$ and define $x_{n+1} = f(x_n) \in X$. But then, the set $\set{x_n \mid n < \omega}$ is a countable subset of $S$.
+    
+    For the other direction, let $X \subset S$ be countable, say, $X=\set{x_n \mid n < \omega}$. Then, define $f \colon S \to X$ by:
+    \begin{equation*}
+        f(s) = \begin{cases} x_{n+1} & \mbox{if } s = x_n \\ s & \mbox{otherwise.} \end{cases}
+    \end{equation*}
+\end{customthm}
+
+\begin{customthm}{I.3.15}
+    i) Let $A,B$ be $D$--finite sets, then $A$ and $B$ have no countable subsets. Suppose the set $A \cup B$ is $D$--infinite, and so has a countable subset $X$. But then, $X = X \cap (A \cup B) = (X \cap A) \cup (X \cap B)$. Sets $(X \cap A)$ and $(X \cap B)$ cannot be countable, hence are finite. Sum of two finite sets is finite, so $X$ is finite, hence $D$--finite.
+    
+    Suppose $X \subset A \times B$ is $D$--infinite and $A,B$ are $D$--finite. Then, $|X| \leq |\set{a \mid (a,b) \in A}| \times |\set{b \mid (a,b) \in B}|$. But $|\set{a \mid (a,b) \in A}|$ and $|\set{b \mid (a,b) \in B}|$, as subsets of $D$--finite sets, cannot be countable and are finite. Hence, $|X|$ is also finite, contradiction.
+    \\
+    ii)
+    iii)
+\end{customthm}
+
+\begin{customthm}{I.3.16}
+    
+\end{customthm}
+
+\begin{customthm}{I.4.1}
+    For the cardinality, of the set of real continuous functions, it is enough to observe that every such a function is determined by its values at rational points, i.e., let $p_n/q_n \to x$, then $f(x) = \lim f(p_n/q_n)$. So the cardinality is $\continuum^\omega = \continuum$.
+    
+    For all the real functions, it is obviously $\continuum^\continuum$ (every real point can be mapper to any real point).
+\end{customthm}
+
+\begin{customthm}{I.4.2}
+    It is enough to prove that for two sequences $x,y \in \omega^\omega$ that are chosen arbitrarily and are distinct, the linear orderings $x_0 + \Z + x_1 + \Z + \ldots$ and $y_0 + \Z + y_1 + \Z + \ldots$ are different.
+    
+    Let us first look at $x_0 + \Z$ and $y_0 + \Z$. If $x_0 \neq y_0$, say $x_0>y_0$, then these orders cannot be isomorphic---there is nowhere we can send $x_0$ to without breaking the ordering. And the same argument holds for $x_0 + \Z + \ldots + x_k + \Z$ and $y_0 + \Z + \ldots + y_k + \Z$ for any $k$. Finally, for $x_0 + \Z + x_1 + \Z + \ldots$ and $y_0 + \Z + y_1 + \Z + \ldots$, we look at the minimal $k$ such that $x_k$ and $y_k$ are different and repeat the argument.
+\end{customthm}
+
+\begin{customthm}{I.4.3}
+    Any polynomial has at most finitely many roots and there are countably many polynomials with integer coefficients. So there are at most $\omega^{<\omega} = \aleph_0$ algebraic reals. And of course linear polynomials with integer coefficient have different algebraic roots and form a countable set, so there are exactly countably many algebraic reals.
+\end{customthm}
+
+\begin{customthm}{I.4.4}
+    It suffices to prove it for $\R \times \R$, because it has the same cardinality as $\R$. Let $S$ be a countable subset of $\R \times \R$. Now, for each real $r$, the line $(\set{r} \times \R) \setminus S$ has at least one point (otherwise $S$ would be the whole line and hence of cardinality continuum). So the whole set $(\set{r} \times \R) \setminus S$ must have cardinality $1 \cdot |\R| = \continuum$.
+\end{customthm}
+
+\begin{customthm}{I.4.5}
+    i) The set of irrational numbers is equal to $\R \setminus \Q$.
+    \\
+    ii) The set of transcendental numbers is equal to $\R\setminus \mathbb{A}$
+    \\
+    By above and previous exercise, both sets are of cardinality continuum.
+\end{customthm}
+
+\begin{customthm}{I.4.6}
+    There are at least $\continuum$ many open sets of reals as each interval $(x, \infty)$ is distinct, open, and there are $\continuum$ many of them. On the other hand, each open set is a countable sum of rational intervals and there are at most $\omega^\omega = \continuum$ possible combinations of those.
+\end{customthm}
+
+\begin{customthm}{I.4.7}
+    Cantor set is non-empty, because it is in one-to-one correspondence with $0$-$1$ $\omega$--sequences and hence has cardinality $\continuum$. It is closed, because it is an intersection of closed sets. What is left is to prove that the Cantor set has no isolated points. Let $x$ be an arbitrary point in the Cantor set and let us pick $\epsilon > 0$. It suffices to find $y \neq x$ such that $|x-y|<\epsilon$. Recall that the Cantor set $C$ is an intersection of $2^n$ intervals $C_n$ each of length $3^{-n}$. Pick $n$ large enough so that $3^{-n}<\epsilon$. Let $[a,b]$ be one of those intervals that comprise $C_n$. Since $x \in C$, $x \in C_{n+1}$ and there is a subinterval $[a_0,b_0] \subset [a,b]$. But, by the construction of $C_{n+1}$, there is another interval $[a_1,b_1] \subset [a,b]$, which has an empty intersection with $[a_0,b_0]$. It is clear from the construction of the Cantor set that it has a nonempty intersection with the interval $[a_0,b_0]$. Hence, there is a $y \neq x$ in the Cantor set such that $|x-y| \leq 3^{-n} < \epsilon$.
+\end{customthm}
+
+\begin{customthm}{I.4.8}\label{ex:perfect-set-intersected-with-interval-cardinality-continuum}
+    Let $P$ be perfect and $P \cap (a,b) \neq \emptyset$. Pick an $x \in P \cap (a,b)$. Since, $P$ is perfect, there must be a sequence of elements not equal to $x$ both in $(a,x)$ and in $(x,b)$. So $P \cap (a,x) \neq \emptyset \neq P \cap (x,b)$. Now, pick $x_0 \in (a,x)$ and $x_1 \in (b,x)$. This process can be repeated and after $\omega$ many steps with have picked $\continuum$ many distinct points in $P \cap (a,b)$.
+\end{customthm}
+
+\begin{customthm}{I.4.9}\label{ex:P_1-and-P_2-perfect-and-not-subset-of-each-other-then-their-difference-is-of-cardinality-continuum}
+    Let $P_2 \not \subset P_1$ be perfect sets. There is a point $x \in P_2 \setminus P_1$. There must be a sufficiently small interval $(a,b)$ containing $x$ such that $(a,b) \cap P_1 = \emptyset$ (if it weren't the case we could construct a sequence of $P_1$ elements approaching $x$ and then $x \in P_1$). By the exercise above, this ends the proof.
+\end{customthm}
+
+\begin{customthm}{I.4.10}
+    Let $P$ be perfect. Take any $p \in P$ and any neighborhood $(a,b)$ of $p$. Then, by exercise~\ref{ex:perfect-set-intersected-with-interval-cardinality-continuum} this neighborhood contains uncountably many elements of $P$.
+\end{customthm}
+
+\begin{customthm}{I.4.11}
+    Let $P$ be perfect, $P \subset F$, where $F$ is closed and let $F^*$ be the set of all condensation points of $F$. By exercise above, the set of condensation points $P^*$ of $P$ is equal to $P$. But then, it must be the case that $P^* \subset F^*$, and so $P \subset F^*$.
+\end{customthm}
+
+\begin{customthm}{I.4.12}
+    Let $F$ be an uncountable closed set and let $P$ be the perfect set constructed in the proof of Cantor-Bendixson theorem. Take any $a \in F^*$. Each neighborhood of $a$ must have an element from $P$, because $F \setminus P$ is countable and $a$ is a condensation point. But that means $a$ is a limit of elements of $P$, hence $a \in P$. So $F^* \subset P$. This, combined with the exercise above, gives us that $F^*=P$.
+\end{customthm}
+
+\begin{customthm}{I.4.13}
+    By the exercise above and Cantor-Bendixson theorem, we have that $F = F^* \cup (F \setminus F^*)$, where $F^*$ is a perfect set and $F \setminus F^*$ is at most countable. Suppose there is another set $P$ such that $F = P \cup (F \setminus P)$ such that $P$ is perfect and $F \setminus P$ is countable.
+    
+    Suppose $P \subset F^*$, then $F = P \cup (F \setminus F^*)$, so $P = F^*$. We proceed similarly if $F^* \subset P$. Suppose $P \not\subset F^*$. But then $\emptyset = F^* \setminus P \cup ((F \setminus F^*) \setminus (F \setminus P)) \supset F^* \setminus P$ and, by exercise~\ref{ex:P_1-and-P_2-perfect-and-not-subset-of-each-other-then-their-difference-is-of-cardinality-continuum}, $F^* \setminus P$ has cardinality continuum. This is a contradiction!
+\end{customthm}
+
+\begin{customthm}{I.4.13}
+    Suppose $\Q$ is the intersection of countable collection of open sets $U_n$. Since $\Q$ is dense, $U_n$ must also be dense. Let us enumerate $\Q$ by $q_n$. Consider sets $V_n = \R \setminus \set{q_n}$. Then the family of sets consisting of all $U_n$ and $V_n$ is a collection of open dense sets. By the Baire Category Theorem, the intersection of these sets is dense. But $\cap V_n = \emptyset$, so it is definitely not---contradiction.
+\end{customthm}
+
+\begin{customthm}{I.4.13}
+    Suppose $B$ is a Borel set and $f \colon X \to Y$ is a continuous function. We need to prove that $f^{-1}(B)$ is also Borel. It is enough to prove that $\set{f^{-1}(B) \mid B \text{ Borel}}$ forms a $\sigma$-algebra and contains all open sets:
+    \\
+    i) it contains all open sets in $f^{-1}(Y)$, because $f$ is continuous.
+    \\
+    ii) set $\set{f^{-1}(B) \mid B \text{ Borel}}$ forms a $\sigma$-algebra, because $f^(Y)$ is its element, $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$, and $f^{-1}(Y/A) = X/f^{-1}(A)$.
+\end{customthm}
+
 \end{document}
