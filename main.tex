@@ -318,16 +318,66 @@
     Suppose $P \subset F^*$, then $F = P \cup (F \setminus F^*)$, so $P = F^*$. We proceed similarly if $F^* \subset P$. Suppose $P \not\subset F^*$. But then $\emptyset = F^* \setminus P \cup ((F \setminus F^*) \setminus (F \setminus P)) \supset F^* \setminus P$ and, by exercise~\ref{ex:P_1-and-P_2-perfect-and-not-subset-of-each-other-then-their-difference-is-of-cardinality-continuum}, $F^* \setminus P$ has cardinality continuum. This is a contradiction!
 \end{customthm}
 
-\begin{customthm}{I.4.13}
+\begin{customthm}{I.4.14}
     Suppose $\Q$ is the intersection of countable collection of open sets $U_n$. Since $\Q$ is dense, $U_n$ must also be dense. Let us enumerate $\Q$ by $q_n$. Consider sets $V_n = \R \setminus \set{q_n}$. Then the family of sets consisting of all $U_n$ and $V_n$ is a collection of open dense sets. By the Baire Category Theorem, the intersection of these sets is dense. But $\cap V_n = \emptyset$, so it is definitely not---contradiction.
 \end{customthm}
 
-\begin{customthm}{I.4.13}
+\begin{customthm}{I.4.15}
     Suppose $B$ is a Borel set and $f \colon X \to Y$ is a continuous function. We need to prove that $f^{-1}(B)$ is also Borel. It is enough to prove that $\set{f^{-1}(B) \mid B \text{ Borel}}$ forms a $\sigma$-algebra and contains all open sets:
     \\
     i) it contains all open sets in $f^{-1}(Y)$, because $f$ is continuous.
     \\
     ii) set $\set{f^{-1}(B) \mid B \text{ Borel}}$ forms a $\sigma$-algebra, because $f^(Y)$ is its element, $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$, and $f^{-1}(Y/A) = X/f^{-1}(A)$.
 \end{customthm}
+
+\begin{customthm}{I.4.16}
+    Set is $G_\delta$ if it is a countable intersection of open sets. An open set is a set such that given $x$ in that set and $\delta > 0$, whenever $|x-y| < \delta$, $y$ is an element of that set. Note that $f$ is continuous at $x$ just in case for all $n$, there is a $\delta_n$ such that for $x_1,x_2 \in B(x,\delta_n)$, we have that $|f(x_1)-f(x_2)|<1/n$. We need to prove that, for each $n$, the set
+    \begin{equation*}
+        C_n = \set{x \mid \exists \delta_n(x) \forall x_1,x_2 \in B(x, \delta) \implies |f(x_1) - f(x_2)| < 1/n}
+    \end{equation*}
+    is open. Take $x \in C_n$ and $\epsilon<\delta_n(x)/2$ (small enough to suffice, I think). Then any $y$ such that $|x-y|<\delta_n(x)/2$ is such that $y \in C_n$ (take $\delta_n(y)<\delta_n(x)/2$ or whatever). Hence, $C_n$ is open. To end the proof, note that $C = \cap C_n$ is the set of points of continuity of $f$.
+\end{customthm}
+
+\begin{customthm}{I.4.17}
+    i) Define a map that takes $(x,y) \mapsto x_0, y_0, x_1, y_1, \ldots$, $x,y \in \mathcal{N}$. We prove that this map, say $F$, is a homeomorphism. It is clear that it is bijective. Let us now prove that $F$ is continuous. Take any finite sequence $s$ and look at the basis $O(s) = \set{f \in \mathcal{N} \mid s \subset f}$. This set will be taken by $F^{-1}$ to a set of the form $O(s^0) \times O(s^1)$, where $s^0 = s_0, s_2, s_4,\ldots$ and $s^1 = s_1, s_3, \ldots$. And this set is clearly open. Hence, $F$ is continuous. Now, we prove that $F$ is an open map, i.e., $F$ maps open sets to open sets. But, $F(O(s^1) \times O(s^2)) = O(s)$, where $s = s^1_0, s^2_0, s^1_1, \ldots$, which is open. \\
+    ii) Let us define a map $F \colon \mathcal{N}^\omega \to \mathcal{N} \times \mathcal{N}$ such that $F(x) = y$ if and only if $y(n,m) = x_n(m)$. This is clearly a bijection. Take $O(s) \times O(t)$ and look at $F^{-1}(O(s) \times O(t))$. This is equal to some set $\prod_{i \in \omega} X_i$, where each $X_i$ is a subset if a copy of $\mathcal{N}$. Note that all but finitely many $X_i$ are equal to $\mathcal{N}$ and each $X_i$ is of the form $\bigcup_{i \in \omega} O(w^i)$ for some sequence of finite sequences $w_i$. Conversely, take a set $U$ that is in the basis of $\mathcal{N}^\omega$. Then $U$ is of the form $\prod_{i \in \omega} U_i$, where each $U_i$ is open in $\mathcal{N}$ and all but finitely many $U_i$ are a copy of $\mathcal{N}$. Again, the image of $U$ will be equal to some open $V \subset \mathcal{N} \times \mathcal{N}$. Indeed, it is true that for any finite sequence $s, t$ such that there are $f,g \in V$ extending $s$ and $t$ respectively, it holds that there is a finite extensions of $s,t$, say $s',t'$ such that $[s'], [t'] \in V$.
+\end{customthm}
+
+\begin{customthm}{I.4.18}
+    Let $s \in T_F$, then there is some $f \in F$ such that $s \subset f$. But then $s^\frown f(length(s)+1) \subset f$, so $s$ cannot be maximal.
+    
+    Take a map $F \mapsto T_F$. We have just proved that $T_F$ has no maximal node, so the map is indeed between closed sets of the Baire space and sequential sequences without maximal nodes. Suppose trees $F$ and $G$ are getting mapped to the same $T$. Hence, $T_F = T_G$. Then, we have that $[T_F]=F$ and $[T_G]=G$ are equal, so $F$=$G$ and we know that our map is injective. Now, take any sequential tree without maximal nodes $T$ and note that $[T]$ is closed. So there is an $F$ that is getting mapped to $T$ via our map. Hence, the map is surjective.
+\end{customthm}
+
+\begin{customthm}{I.4.19}
+    Let $P$ be a perfect Polish space. And let $F \colon P \to P'$ be a homeomorphism to a separable complete metric space. We need to find a closed copy of the Cantor set within $P'$. Let $S$ be a set of all finite sequences of $0$'s and $1$'s. Let us inductively define closed sets $I_s$:
+    \begin{itemize}
+        \item[(i)] $I_s \cap P'$ is perfect;
+        \item[(ii)] $diam(I_s) \leq 1/length(s)$;
+        \item[(iii)] $I_{s^\frown 0} \subset I_s$, $I_{s^\frown 1} \subset I_s$, and the intersection $I_{s^\frown 0} \cap I_{s^\frown 1}$ is empty.
+    \end{itemize}
+    And by completeness, it follows that for each $f \in \set{0,1}^\omega$, the set $P' \cap \bigcap_{n<\omega} I_{f_{|n}}$ has exactly one element.
+    
+    Now, define $F' \colon \set{0,1}^\omega \to P'$ as $F'(f) = x \in P' \cap \bigcap_{n<\omega} I_{f_{|n}}$. By the definition, $F'$ is an injection. Take any $x \in P' \cap \bigcap_{n<\omega} I_{f_{|n}}$ together with it's neighbourhood $U$. Observe that $F'^{-1}(U)$ is mapped to a set $O(s)$ in the base of the topology of the Cantor space, for some finite sequence of $0$'s and $1$'s $s$. On the other hand, take any base $O(s)$ in the Cantor space and it will be mapped by $F$ to the set of the form $U \cap \bigcup \set{P' \cap \bigcup_{n<\omega} I_{f_{|n}} \mid f \in \set{0,1}^\omega}$, where $U$ is open in $P'$. And this set is open in $P' \cap \bigcup \set{ \bigcap_{n<\omega} I_{f_{|n}} \mid f \in \set{0,1}^\omega}$. Hence, $F'$ is a homeomorphism between the Cantor space and a closed subset of $P'$. This ends the proof.
+\end{customthm}
+
+\begin{customthm}{I.4.20}
+    Let $x_n$ be a dense subset of a Polish space $X$ and define $f(x) = (d(x,x_n) \mid n \in N)$. Note that we can assume $0 \leq d \leq 1$ as we can always normalize the metric via map $d \mapsto 1/(1+d)$.
+    
+    Suppose $f(x)=f(y)$. Let $\epsilon > 0$ and take $n$ such that $d(x,x_n) < \epsilon/2$. Then, $d(x,y) \leq d(x,x_n) + d(y,x_n = 2d(x,x_n) < \epsilon)$. But this works for any $\epsilon > 0$, so $d(x,y)=0$, hence $x=y$. So $f$ is injective.
+    
+    Take any $\zeta_m \to x$, then 
+    $f(\zeta_m) = (d(\zeta_m,x_n) \mid n \in N) = ( \lim d(\zeta_m, x_n) \mid n \in N) = f(x)$. So $f$ is continuous.
+    
+    Take $f(\zeta_m) \to f(x)$. Then, $d(\zeta_m,x_n) \to d(x,x_n)$ for every $n$. But then for any $\epsilon > 0$, there is an $n$ such that for sufficiently large $m$, we have that $d(\zeta_m,x) < d(\zeta_n, x_n) + d(x_n,x) < \epsilon/2 + \epsilon/2 = \epsilon$. Hence, $\zeta_m \to x$ and $f$ is an open mapping.
+    
+    We now prove that the image of $f$ is a $G_\delta$ subset of the Hilbert's cube. Observe that Hilbert's cube is a Polish space and that the image of $f$ is also a Polish space. Take the base $B_n$ of the Hilbert's cube. For any open neighborhood of $f(x)$ and $\epsilon>0$, there is a base $B_n$ contained in that neighborhood such that $\text{diam}(f(X) \cap B_N) < \epsilon$ (with respect to the induced complete metric). Define a $G_\delta$ set $Y$ as follows.
+    \begin{equation*}
+        Y = \bigcap_{m<\omega} \bigcup_{n<\omega} \set{B_n \mid \text{diam}(f(X) \cap B_n) < 1/m}.
+    \end{equation*}
+    Observe that $f(X) \subset Y$. Take $y \in Y$. For every $m$, there is an $n(m)$ such that $y \in B_{n(m)}$ with $\text{diam}(f(X) \cap B_{n(m)} < 1/m$. So $f(X)$ is dense in $Y$ and there is a Cauchy sequence $y_m \in f(X)$ converging to $y$. Hence, $y \in f(X)$ and the image of $f$ is $G_\delta$.
+\end{customthm}
+
+
 
 \end{document}
